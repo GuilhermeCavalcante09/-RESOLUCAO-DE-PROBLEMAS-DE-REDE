@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Redes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+```
+<header>
+    <div class="container">
+        <h1>Diagnóstico de Redes de Computadores</h1>
+        <p>Identificação, análise e solução de problemas comuns em redes</p>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <a href="#inicio">Início</a>
+        <a href="#problemas">Problemas</a>
+        <a href="#ferramentas">Ferramentas</a>
+        <a href="#conclusao">Conclusão</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section id="inicio" class="intro">
+        <h2>Sobre o projeto</h2>
+
+        <p>
+            Este projeto apresenta situações comuns encontradas em redes de
+            computadores. O objetivo é demonstrar como identificar possíveis
+            problemas, analisar suas causas e aplicar procedimentos para
+            solucioná-los utilizando comandos e ferramentas de diagnóstico.
+        </p>
+
+        <div class="objetivo">
+            <h3>Objetivo</h3>
+            <p>
+                Desenvolver a capacidade de identificar, analisar e solucionar
+                problemas comuns de redes de computadores por meio de testes
+                práticos e ferramentas de diagnóstico.
+            </p>
+        </div>
+    </section>
+
+    <section id="problemas">
+
+        <h2>Problemas analisados</h2>
+
+        <article class="problema">
+            <span class="numero">01</span>
+
+            <h3>Computador sem acesso à internet</h3>
+
+            <h4>O que está acontecendo?</h4>
+            <p>
+                O computador está conectado à rede, mas não consegue acessar
+                sites ou outros serviços disponíveis na internet.
+            </p>
+
+            <h4>Possíveis causas</h4>
+            <ul>
+                <li>Problema no roteador;</li>
+                <li>Falha na conexão com o provedor;</li>
+                <li>Configuração incorreta de IP;</li>
+                <li>Gateway incorreto;</li>
+                <li>Problema de DNS;</li>
+                <li>Problema no cabo ou na conexão Wi-Fi.</li>
+            </ul>
+
+            <h4>Como identificar?</h4>
+            <p>
+                Primeiro, podemos verificar as configurações de rede utilizando:
+            </p>
+
+            <pre><code>ipconfig /all</code></pre>
+
+            <p>
+                Depois podemos testar a comunicação com o gateway:
+            </p>
+
+            <pre><code>ping 192.168.1.1</code></pre>
+
+            <p>
+                Também podemos testar a comunicação com um endereço externo:
+            </p>
+
+            <pre><code>ping 8.8.8.8</code></pre>
+
+            <h4>Como resolver?</h4>
+            <p>
+                Devemos verificar os cabos, o roteador, as configurações de
+                IP e o gateway. Caso o computador utilize DHCP, podemos
+                solicitar uma nova configuração:
+            </p>
+
+            <pre><code>ipconfig /release
+```
+
+ipconfig /renew</code></pre> </article>
+
+```
+        <article class="problema">
+            <span class="numero">02</span>
+
+            <h3>Endereço IP incorreto</h3>
+
+            <h4>O que está acontecendo?</h4>
+            <p>
+                O computador possui um endereço IP que não pertence à rede
+                correta ou apresenta uma configuração incompatível.
+            </p>
+
+            <h4>Possíveis causas</h4>
+            <ul>
+                <li>Configuração manual incorreta;</li>
+                <li>Falha no servidor DHCP;</li>
+                <li>Máscara de sub-rede incorreta;</li>
+                <li>Gateway incorreto;</li>
+                <li>Problemas de conexão com o roteador.</li>
+            </ul>
+
+            <h4>Como identificar?</h4>
+
+            <pre><code>ipconfig /all</code></pre>
+
+            <p>
+                Esse comando permite verificar o endereço IPv4, máscara,
+                gateway, DNS e informações do DHCP.
+            </p>
+
+            <p>Também podemos renovar o endereço IP:</p>
+
+            <pre><code>ipconfig /release
+```
+
+ipconfig /renew</code></pre>
+
+```
+            <h4>Como resolver?</h4>
+            <p>
+                A configuração de rede deve ser corrigida. Em redes que
+                utilizam DHCP, o computador pode ser configurado para obter
+                automaticamente um endereço IP.
+            </p>
+        </article>
+
+
+        <article class="problema">
+            <span class="numero">03</span>
+
+            <h3>Problema de DNS</h3>
+
+            <h4>O que está acontecendo?</h4>
+            <p>
+                O computador possui conexão com a internet, mas não consegue
+                acessar sites utilizando seus nomes de domínio.
+            </p>
+
+            <h4>Possíveis causas</h4>
+            <ul>
+                <li>Servidor DNS indisponível;</li>
+                <li>DNS configurado incorretamente;</li>
+                <li>Falha temporária no servidor DNS;</li>
+                <li>Cache DNS com informações incorretas.</li>
+            </ul>
+
+            <h4>Como identificar?</h4>
+
+            <p>Primeiro podemos testar um endereço IP:</p>
+
+            <pre><code>ping 8.8.8.8</code></pre>
+
+            <p>
+                Depois podemos testar um domínio:
+            </p>
+
+            <pre><code>ping google.com</code></pre>
+
+            <p>
+                Também podemos utilizar o comando <strong>nslookup</strong>:
+            </p>
+
+            <pre><code>nslookup google.com</code></pre>
+
+            <h4>Como resolver?</h4>
+
+            <p>
+                Podemos verificar a configuração dos servidores DNS e limpar
+                o cache DNS:
+            </p>
+
+            <pre><code>ipconfig /flushdns</code></pre>
+
+            <p>
+                Após isso, o funcionamento do DNS pode ser testado novamente
+                utilizando o comando <strong>nslookup</strong>.
+            </p>
+        </article>
+
+
+        <article class="problema">
+            <span class="numero">04</span>
+
+            <h3>Cabo de rede desconectado ou com defeito</h3>
+
+            <h4>O que está acontecendo?</h4>
+            <p>
+                O computador não consegue estabelecer uma conexão através
+                do cabo Ethernet.
+            </p>
+
+            <h4>Possíveis causas</h4>
+            <ul>
+                <li>Cabo desconectado;</li>
+                <li>Cabo danificado;</li>
+                <li>Conector RJ-45 com problema;</li>
+                <li>Porta do switch ou roteador com defeito;</li>
+                <li>Placa de rede desativada.</li>
+            </ul>
+
+            <h4>Como identificar?</h4>
+
+            <p>
+                Primeiro devemos verificar fisicamente o cabo e as luzes
+                indicadoras da porta de rede.
+            </p>
+
+            <pre><code>ipconfig</code></pre>
+
+            <p>
+                O comando permite verificar o estado dos adaptadores de rede
+                e identificar situações em que a mídia está desconectada.
+            </p>
+
+            <h4>Como resolver?</h4>
+
+            <ul>
+                <li>Reconectar o cabo;</li>
+                <li>Testar outro cabo de rede;</li>
+                <li>Testar outra porta do switch ou roteador;</li>
+                <li>Verificar se o adaptador está habilitado;</li>
+                <li>Realizar novamente os testes de conectividade.</li>
+            </ul>
+        </article>
+
+
+        <article class="problema">
+            <span class="numero">05</span>
+
+            <h3>Conflito de endereço IP</h3>
+
+            <h4>O que está acontecendo?</h4>
+            <p>
+                Dois dispositivos da mesma rede estão utilizando o mesmo
+                endereço IP, causando problemas de comunicação.
+            </p>
+
+            <h4>Possíveis causas</h4>
+
+            <ul>
+                <li>Dois computadores configurados com o mesmo IP;</li>
+                <li>Configuração incorreta de IP estático;</li>
+                <li>Problema relacionado ao DHCP.</li>
+            </ul>
+
+            <h4>Como identificar?</h4>
+
+            <p>Primeiro verificamos o endereço IP:</p>
+
+            <pre><code>ipconfig</code></pre>
+
+            <p>
+                Também podemos consultar a tabela ARP:
+            </p>
+
+            <pre><code>arp -a</code></pre>
+
+            <p>
+                A tabela ARP apresenta associações entre endereços IP e
+                endereços MAC encontrados na rede.
+            </p>
+
+            <h4>Como resolver?</h4>
+
+            <p>
+                Os dispositivos devem possuir endereços IP diferentes.
+                Quando a rede utiliza DHCP, podemos renovar a configuração:
+            </p>
+
+            <pre><code>ipconfig /release
+```
+
+ipconfig /renew</code></pre>
+
+```
+            <p>
+                Depois, podemos verificar novamente a configuração utilizando
+                o comando <strong>ipconfig</strong>.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section id="ferramentas">
+
+        <h2>Ferramentas e comandos de diagnóstico</h2>
+
+        <div class="ferramentas">
+
+            <div class="ferramenta">
+                <h3>ipconfig</h3>
+                <p>
+                    Exibe informações da configuração de rede, como endereço
+                    IP, máscara, gateway e servidores DNS.
+                </p>
+            </div>
+
+            <div class="ferramenta">
+                <h3>ping</h3>
+                <p>
+                    Testa a comunicação entre o computador e outro dispositivo
+                    ou endereço de rede.
+                </p>
+                <code>ping 8.8.8.8</code>
+            </div>
+
+            <div class="ferramenta">
+                <h3>nslookup</h3>
+                <p>
+                    Verifica a resolução de nomes de domínio através do DNS.
+                </p>
+                <code>nslookup google.com</code>
+            </div>
+
+            <div class="ferramenta">
+                <h3>tracert</h3>
+                <p>
+                    Mostra o caminho percorrido pelos pacotes até um destino.
+                </p>
+                <code>tracert google.com</code>
+            </div>
+
+            <div class="ferramenta">
+                <h3>arp</h3>
+                <p>
+                    Exibe informações sobre associações entre endereços IP
+                    e endereços MAC.
+                </p>
+                <code>arp -a</code>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="testes">
+
+        <h2>Testes realizados</h2>
+
+        <p>
+            Nesta seção podem ser adicionados prints dos testes realizados
+            durante o desenvolvimento do projeto.
+        </p>
+
+        <div class="prints">
+
+           
+
+            <div class="print">
+                <div class="placeholder">
+                 <img src="ping.png" alt="Resultado do comando ping">
+                </div>
+                <p>Teste utilizando ping</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="conclusao" class="conclusao">
+
+        <h2>Conclusão</h2>
+
+        <p>
+            O diagnóstico de problemas de rede depende da análise das
+            diferentes partes da comunicação. Comandos como
+            <strong>ipconfig</strong>, <strong>ping</strong>,
+            <strong>nslookup</strong>, <strong>tracert</strong> e
+            <strong>arp</strong> ajudam a identificar onde o problema
+            está ocorrendo.
+        </p>
+
+        <p>
+            A utilização dessas ferramentas permite verificar configurações
+            de IP, comunicação entre dispositivos, funcionamento do DNS e
+            possíveis problemas físicos ou de configuração.
+        </p>
+
+        <p>
+            Dessa forma, o projeto demonstra procedimentos básicos que podem
+            ser utilizados para analisar e solucionar problemas comuns em
+            redes de computadores.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>Projeto de Redes de Computadores — 3º Ano Técnico em Informática</p>
+</footer>
+```
+
+</body>
+</html>
